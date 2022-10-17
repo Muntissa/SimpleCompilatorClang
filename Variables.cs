@@ -10,11 +10,12 @@ namespace SimpleCompilatorClang
     {
         public List<string> singleSeparators;
         public List<string> doubleSeparators;
-        string[]? keyWords;
-        public Variables(string[] inSingleSeparators, string[] inDoubleSeparators)
+        public List<string> keyWords;
+        public Variables(List<string> inSingleSeparators, List<string> inDoubleSeparators, List<string> inKeyWords)
         {
-            singleSeparators = inSingleSeparators.ToList();
-            doubleSeparators = inDoubleSeparators.ToList();
+            singleSeparators = inSingleSeparators;
+            doubleSeparators = inDoubleSeparators;
+            keyWords = inKeyWords;
         }
 
     }

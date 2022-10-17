@@ -9,24 +9,31 @@ namespace SimpleCompilatorClang
 {
     public static class Helper
     {
-        public static /*IEnumerable<IGrouping<string, string>>*/List<string> FirstProcess(string inputString)
+        public static /*IEnumerable<IGrouping<string, string>>*/List<string> FirstProcess(string inputString, Variables variables)
         {
-            Variables variables = new Variables(new string[] { "(", ")", "{", "}", "=", ";" }, new string[] { "<=" });
             return Regex.Matches(inputString, $@"([{String.Join("", variables.doubleSeparators)}])|([{String.Join("", variables.singleSeparators)}])|((_)+[A-z]+[0-9]+)|([A-z]+[0-9]+)|([A-z]+)|([0-9]+)")
                 .Cast<Match>()
                 .Select(m => m.Value)
                 .ToList();
-/*                .Select(s => s.ToString())
+              /*.Select(s => s.ToString())
                 .GroupBy(t => GetStringType(t));*/
         }
 
-        public static string GetStringType(string t)
+        public static string GetStringType(string t, Variables variables)
         {
             if (Char.IsDigit(t.First()))
-                return "Литерал";
-            if (Char.IsLetter(t.First()))
-                return "Идентификатор";
-            return "Разделитель";
+                return "Literal";
+            if (variables.keyWords.Contains(t))
+                return "KeyWord";
+            else if (Char.IsLetter(t.First()))
+                return "ID";
+            return "Separator";
+        }
+
+        public static IEnumerable<IGrouping<string, string>> SecondProcess(string inputString, Variables variables)
+        {
+            var list = FirstProcess(inputString, variables);
+            return list.Select(s => s.ToString()).GroupBy(t => GetStringType(t, variables));
         }
     }
 }
