@@ -9,14 +9,13 @@ namespace SimpleCompilatorClang
 {
     public static class Helper
     {
-        public static /*IEnumerable<IGrouping<string, string>>*/List<string> FirstProcess(string inputString, Variables variables)
+        public static List<string> FirstProcess(string inputString, Variables variables)
         {
-            return Regex.Matches(inputString, $@"([{String.Join("", variables.doubleSeparators)}])|([{String.Join("", variables.singleSeparators)}])|((_)+[A-z]+[0-9]+)|([A-z]+[0-9]+)|([A-z]+)|([0-9]+)")
+            return Regex
+                .Matches(inputString, $@"([{String.Join("", variables.doubleSeparators)}])|([{String.Join("", variables.singleSeparators)}])|((_)+[A-z]+[0-9]+)|([A-z]+[0-9]+)|([A-z]+)|([0-9]+)")
                 .Cast<Match>()
                 .Select(m => m.Value)
                 .ToList();
-              /*.Select(s => s.ToString())
-                .GroupBy(t => GetStringType(t));*/
         }
 
         public static string GetStringType(string t, Variables variables)

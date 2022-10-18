@@ -38,6 +38,7 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -85,6 +86,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.textBox6);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.textBox5);
             this.tabPage2.Controls.Add(this.textBox4);
@@ -113,7 +115,7 @@
             this.textBox5.Location = new System.Drawing.Point(788, 337);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(339, 292);
+            this.textBox5.Size = new System.Drawing.Size(339, 306);
             this.textBox5.TabIndex = 3;
             // 
             // textBox4
@@ -139,6 +141,14 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(344, 289);
             this.textBox2.TabIndex = 0;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(372, 169);
+            this.textBox6.Multiline = true;
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(397, 474);
+            this.textBox6.TabIndex = 5;
             // 
             // Form1
             // 
@@ -169,5 +179,6 @@
         private TextBox textBox4;
         private TextBox textBox3;
         private TextBox textBox2;
+        private TextBox textBox6;
     }
 }
