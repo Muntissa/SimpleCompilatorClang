@@ -6,13 +6,33 @@ namespace SimpleCompilatorClang
         {
             InitializeComponent();
         }
-        string inputString = "int main() { int k; int sum = 0; for(int i=1; i<=k; i++) {sum = sum + i; } }";
-        Variables variables = new Variables(new List<string> { "(", ")", "{", "}", "=", ";" }, new List<string> { "<=" }, new List<string> { "for", "int", "main" });
+
+        /*main()
+        {
+            int a, b;
+            c = 0;
+            for (b = 1; b < 5; b++)
+            {
+                b = 5;
+                c = c + b * 3;
+            }
+        }*/
+
+/*        int main() 
+        { 
+            int k; 
+            int sum = 0; 
+            for (int i = 1; i <= k; i++) 
+            {
+                sum = sum + i; 
+            } 
+        }*/
+        Variables variables = new Variables(new List<string> { "(", ")", "{", "}", "=", ";" }, new List<string> { "==" }, new List<string> { "for", "int", "main" });
         List<string> listLeteral, listKeyWord, listID, listSeparator;
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var firstList = Helper.FirstProcess(inputString, variables);
+            var firstList = Helper.FirstProcess(inputTB.Text, variables);
             foreach(var word in firstList)
             {
                 if (listLeteral.Contains(word))
@@ -28,7 +48,7 @@ namespace SimpleCompilatorClang
 
         private void buttonLB1_Click(object sender, EventArgs e)
         {
-            var groupList = Helper.FirstProcess(inputString, variables);
+            var groupList = Helper.FirstProcess(inputTB.Text, variables);
             lexicalAnalysisiTB.Text = "";
             foreach (var item in groupList)
                 lexicalAnalysisiTB.Text += item + " - " + Helper.GetStringType(item, variables) + Environment.NewLine;
@@ -36,7 +56,7 @@ namespace SimpleCompilatorClang
         
         private void button2_Click(object sender, EventArgs e)
         {
-            var list = Helper.SecondProcess(inputString, variables);
+            var list = Helper.SecondProcess(inputTB.Text, variables);
             foreach (var group in list)
                 if (group.Key == "Literal")
                 {

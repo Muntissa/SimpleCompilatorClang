@@ -34,6 +34,10 @@
             this.tabPageLB1 = new System.Windows.Forms.TabPage();
             this.lexicalAnalysisLabel = new System.Windows.Forms.Label();
             this.tabPageLB2 = new System.Windows.Forms.TabPage();
+            this.classificationLabel = new System.Windows.Forms.Label();
+            this.separatorTB = new System.Windows.Forms.Label();
+            this.keyWordTB = new System.Windows.Forms.Label();
+            this.idTB = new System.Windows.Forms.Label();
             this.leteralTB = new System.Windows.Forms.Label();
             this.buttonGenerealTB = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -42,10 +46,7 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBoxKeyWord = new System.Windows.Forms.TextBox();
             this.textBoxLiteral = new System.Windows.Forms.TextBox();
-            this.idTB = new System.Windows.Forms.Label();
-            this.keyWordTB = new System.Windows.Forms.Label();
-            this.separatorTB = new System.Windows.Forms.Label();
-            this.classificationLabel = new System.Windows.Forms.Label();
+            this.inputTB = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPageLB1.SuspendLayout();
             this.tabPageLB2.SuspendLayout();
@@ -53,7 +54,7 @@
             // 
             // lexicalAnalysisiTB
             // 
-            this.lexicalAnalysisiTB.Location = new System.Drawing.Point(6, 42);
+            this.lexicalAnalysisiTB.Location = new System.Drawing.Point(783, 42);
             this.lexicalAnalysisiTB.Multiline = true;
             this.lexicalAnalysisiTB.Name = "lexicalAnalysisiTB";
             this.lexicalAnalysisiTB.Size = new System.Drawing.Size(354, 625);
@@ -61,7 +62,7 @@
             // 
             // buttonLB1
             // 
-            this.buttonLB1.Location = new System.Drawing.Point(366, 626);
+            this.buttonLB1.Location = new System.Drawing.Point(499, 61);
             this.buttonLB1.Name = "buttonLB1";
             this.buttonLB1.Size = new System.Drawing.Size(136, 41);
             this.buttonLB1.TabIndex = 1;
@@ -81,6 +82,7 @@
             // 
             // tabPageLB1
             // 
+            this.tabPageLB1.Controls.Add(this.inputTB);
             this.tabPageLB1.Controls.Add(this.lexicalAnalysisLabel);
             this.tabPageLB1.Controls.Add(this.lexicalAnalysisiTB);
             this.tabPageLB1.Controls.Add(this.buttonLB1);
@@ -95,7 +97,7 @@
             // lexicalAnalysisLabel
             // 
             this.lexicalAnalysisLabel.AutoSize = true;
-            this.lexicalAnalysisLabel.Location = new System.Drawing.Point(18, 15);
+            this.lexicalAnalysisLabel.Location = new System.Drawing.Point(759, 24);
             this.lexicalAnalysisLabel.Name = "lexicalAnalysisLabel";
             this.lexicalAnalysisLabel.Size = new System.Drawing.Size(120, 15);
             this.lexicalAnalysisLabel.TabIndex = 2;
@@ -122,6 +124,43 @@
             this.tabPageLB2.TabIndex = 1;
             this.tabPageLB2.Text = "LB2";
             this.tabPageLB2.UseVisualStyleBackColor = true;
+            // 
+            // classificationLabel
+            // 
+            this.classificationLabel.AutoSize = true;
+            this.classificationLabel.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.classificationLabel.Location = new System.Drawing.Point(426, 10);
+            this.classificationLabel.Name = "classificationLabel";
+            this.classificationLabel.Size = new System.Drawing.Size(302, 37);
+            this.classificationLabel.TabIndex = 11;
+            this.classificationLabel.Text = "Классификация лексем";
+            // 
+            // separatorTB
+            // 
+            this.separatorTB.AutoSize = true;
+            this.separatorTB.Location = new System.Drawing.Point(788, 319);
+            this.separatorTB.Name = "separatorTB";
+            this.separatorTB.Size = new System.Drawing.Size(76, 15);
+            this.separatorTB.TabIndex = 10;
+            this.separatorTB.Text = "Разделители";
+            // 
+            // keyWordTB
+            // 
+            this.keyWordTB.AutoSize = true;
+            this.keyWordTB.Location = new System.Drawing.Point(788, 7);
+            this.keyWordTB.Name = "keyWordTB";
+            this.keyWordTB.Size = new System.Drawing.Size(100, 15);
+            this.keyWordTB.TabIndex = 9;
+            this.keyWordTB.Text = "Ключевые слова";
+            // 
+            // idTB
+            // 
+            this.idTB.AutoSize = true;
+            this.idTB.Location = new System.Drawing.Point(6, 319);
+            this.idTB.Name = "idTB";
+            this.idTB.Size = new System.Drawing.Size(103, 15);
+            this.idTB.TabIndex = 8;
+            this.idTB.Text = "Идентификаторы";
             // 
             // leteralTB
             // 
@@ -192,42 +231,13 @@
             this.textBoxLiteral.Size = new System.Drawing.Size(344, 289);
             this.textBoxLiteral.TabIndex = 0;
             // 
-            // idTB
+            // inputTB
             // 
-            this.idTB.AutoSize = true;
-            this.idTB.Location = new System.Drawing.Point(6, 319);
-            this.idTB.Name = "idTB";
-            this.idTB.Size = new System.Drawing.Size(103, 15);
-            this.idTB.TabIndex = 8;
-            this.idTB.Text = "Идентификаторы";
-            // 
-            // keyWordTB
-            // 
-            this.keyWordTB.AutoSize = true;
-            this.keyWordTB.Location = new System.Drawing.Point(788, 7);
-            this.keyWordTB.Name = "keyWordTB";
-            this.keyWordTB.Size = new System.Drawing.Size(100, 15);
-            this.keyWordTB.TabIndex = 9;
-            this.keyWordTB.Text = "Ключевые слова";
-            // 
-            // separatorTB
-            // 
-            this.separatorTB.AutoSize = true;
-            this.separatorTB.Location = new System.Drawing.Point(788, 319);
-            this.separatorTB.Name = "separatorTB";
-            this.separatorTB.Size = new System.Drawing.Size(76, 15);
-            this.separatorTB.TabIndex = 10;
-            this.separatorTB.Text = "Разделители";
-            // 
-            // classificationLabel
-            // 
-            this.classificationLabel.AutoSize = true;
-            this.classificationLabel.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.classificationLabel.Location = new System.Drawing.Point(426, 10);
-            this.classificationLabel.Name = "classificationLabel";
-            this.classificationLabel.Size = new System.Drawing.Size(302, 37);
-            this.classificationLabel.TabIndex = 11;
-            this.classificationLabel.Text = "Классификация лексем";
+            this.inputTB.Location = new System.Drawing.Point(6, 42);
+            this.inputTB.Multiline = true;
+            this.inputTB.Name = "inputTB";
+            this.inputTB.Size = new System.Drawing.Size(354, 625);
+            this.inputTB.TabIndex = 3;
             // 
             // Form1
             // 
@@ -266,5 +276,6 @@
         private Label separatorTB;
         private Label keyWordTB;
         private Label idTB;
+        private TextBox inputTB;
     }
 }

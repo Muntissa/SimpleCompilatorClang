@@ -12,7 +12,7 @@ namespace SimpleCompilatorClang
         public static List<string> FirstProcess(string inputString, Variables variables)
         {
             return Regex
-                .Matches(inputString, $@"([{String.Join("", variables.doubleSeparators)}])|([{String.Join("", variables.singleSeparators)}])|((_)+[A-z]+[0-9]+)|([A-z]+[0-9]+)|([A-z]+)|([0-9]+)")
+                .Matches(inputString, $@"([{String.Join("", variables.doubleSeparators)}]+)|([{String.Join("", variables.singleSeparators)}])|((_)+[A-z]+[0-9]+)|([A-z]+[0-9]+)|([A-z]+)|([0-9]+)")
                 .Cast<Match>()
                 .Select(m => m.Value)
                 .ToList();
