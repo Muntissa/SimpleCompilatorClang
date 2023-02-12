@@ -1,8 +1,11 @@
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 namespace SimpleCompilatorClang
 {
-    public partial class Form1 : Form
+    public partial class TranslatorForm : Form
     {
-        public Form1()
+        public TranslatorForm()
         {
             InitializeComponent();
         }
@@ -27,60 +30,143 @@ namespace SimpleCompilatorClang
                 sum = sum + i; 
             } 
         }*/
-        Variables variables = new Variables(new List<string> { "(", ")", "{", "}", "=", ";" }, new List<string> { "==" }, new List<string> { "for", "int", "main" });
+        Variables Variables = new Variables(
+            new List<string> { "/", "(", ")", "{", "}", "*", "=", ";", "+", "-", ",", ">", "<"},
+            new List<string> { "==", "++", "--", "<=", ">=", "!=" }, 
+            new List<string> { "for", "int", "main", "double, float" }
+            );
+        
         List<string> listLeteral, listKeyWord, listID, listSeparator;
 
-        private void button3_Click(object sender, EventArgs e)
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var firstList = Helper.FirstProcess(inputTB.Text, variables);
-            foreach(var word in firstList)
+            if (tabControl1.SelectedTab == tabPageInput)
             {
+                tabControl1.Size = new Size(260, 574);
+                this.Size = new Size(300, 635);
+            }
+            else if(tabControl1.SelectedTab == tabPageLexical)
+            {
+                tabControl1.Size = new Size(260, 630);
+                this.Size = new Size(294, 685);
+            }
+            else if(tabControl1.SelectedTab == tabPageLexemClass)
+            {
+                tabControl1.Size = new Size(865, 660);
+                this.Size = new Size(900, 715);
+            } 
+        }
+
+        private void generalListButton_Click(object sender, EventArgs e)
+        {
+            var firstList = Helper.FirstProcess(inputTB.Text, Variables);
+            
+            dataGridViewGeneral.Rows.Clear();
+
+
+            foreach (var word in firstList)
+            {
+                int rowIndex = dataGridViewGeneral.Rows.Add();
+
+                DataGridViewRow row = dataGridViewGeneral.Rows[rowIndex];
+
                 if (listLeteral.Contains(word))
-                    textBox6.Text += "( " + "1" + " : " + listLeteral.IndexOf(word) + " )" + Environment.NewLine;
+                {
+                    row.Cells["List"].Value = "1" + " : " + listLeteral.IndexOf(word);
+                }    
                 else if (listKeyWord.Contains(word))
-                    textBox6.Text += "( " + "2" + " : " + listKeyWord.IndexOf(word) + " )" + Environment.NewLine;
+                {
+                    row.Cells["List"].Value = "2" + " : " + listKeyWord.IndexOf(word);
+                }
                 else if (listID.Contains(word))
-                    textBox6.Text += "( " + "3" + " : " + listID.IndexOf(word) + " )" + Environment.NewLine;
+                {
+                    row.Cells["List"].Value = "3" + " : " + listID.IndexOf(word);
+                }
                 else if (listSeparator.Contains(word))
-                    textBox6.Text += "( " + "4" + " : " + listSeparator.IndexOf(word) + " )" + Environment.NewLine;
+                {
+                    row.Cells["List"].Value = "4" + " : " + listSeparator.IndexOf(word);
+                } 
             }
         }
 
         private void buttonLB1_Click(object sender, EventArgs e)
         {
-            var groupList = Helper.FirstProcess(inputTB.Text, variables);
-            lexicalAnalysisiTB.Text = "";
+            var groupList = Helper.FirstProcess(inputTB.Text, Variables);
+            
+            dataGridViewLexical.Rows.Clear();
+            
             foreach (var item in groupList)
-                lexicalAnalysisiTB.Text += item + " - " + Helper.GetStringType(item, variables) + Environment.NewLine;
+            {
+                int rowIndex = dataGridViewLexical.Rows.Add();
+                
+                DataGridViewRow row = dataGridViewLexical.Rows[rowIndex];
+                
+                row.Cells["Value"].Value = item;
+                row.Cells["Type"].Value = Helper.GetStringType(item, Variables);
+            }
         }
         
         private void button2_Click(object sender, EventArgs e)
         {
-            var list = Helper.SecondProcess(inputTB.Text, variables);
+            var list = Helper.SecondProcess(inputTB.Text, Variables);
+
+            dataGridViewLiteral.Rows.Clear();
+            dataGridViewKeyWords.Rows.Clear();
+            dataGridViewID.Rows.Clear();
+            dataGridViewSeparators.Rows.Clear();
+
             foreach (var group in list)
-                if (group.Key == "Literal")
+                if (group.Key == "Литерал")
                 {
-                    listLeteral = list.Where(group => group.Key == "Literal").SelectMany(m => m).Distinct().ToList();
+                    listLeteral = list.Where(group => group.Key == "Литерал").SelectMany(m => m).Distinct().ToList();
+
                     foreach (var item in listLeteral)
-                        textBoxLiteral.Text += listLeteral.IndexOf(item) + " - " + item + Environment.NewLine;
+                    {
+                        int rowIndex = dataGridViewLiteral.Rows.Add();
+
+                        DataGridViewRow row = dataGridViewLiteral.Rows[rowIndex];
+                        
+                        row.Cells["IndexLiteral"].Value = listLeteral.IndexOf(item);
+                        row.Cells["ValueLiteral"].Value = item;
+                    }
                 }
-                else if (group.Key == "KeyWord")
+                else if (group.Key == "Ключевое слово")
                 {
-                    listKeyWord = list.Where(group => group.Key == "KeyWord").SelectMany(m => m).Distinct().ToList();
+                    listKeyWord = list.Where(group => group.Key == "Ключевое слово").SelectMany(m => m).Distinct().ToList();
                     foreach (var item in listKeyWord)
-                        textBoxKeyWord.Text += listKeyWord.IndexOf(item) + " - " + item + Environment.NewLine;
+                    {
+                        int rowIndex = dataGridViewKeyWords.Rows.Add();
+
+                        DataGridViewRow row = dataGridViewKeyWords.Rows[rowIndex];
+                        
+                        row.Cells["IndexKeyWord"].Value = listKeyWord.IndexOf(item);
+                        row.Cells["ValueKeyWord"].Value = item;
+                    }
                 }
-                else if (group.Key == "ID")
+                else if (group.Key == "Идентификатор")
                 {
-                    listID = list.Where(group => group.Key == "ID").SelectMany(m => m).Distinct().ToList();
+                    listID = list.Where(group => group.Key == "Идентификатор").SelectMany(m => m).Distinct().ToList();
                     foreach (var item in listID)
-                        textBox4.Text += listID.IndexOf(item) + " - " + item + Environment.NewLine;
+                    {
+                        int rowIndex = dataGridViewID.Rows.Add();
+
+                        DataGridViewRow row = dataGridViewID.Rows[rowIndex];
+                        
+                        row.Cells["IndexID"].Value = listID.IndexOf(item);
+                        row.Cells["ValueID"].Value = item;
+                    }
                 }
-                else if (group.Key == "Separator")
+                else if (group.Key == "Разделитель")
                 {
-                    listSeparator = list.Where(group => group.Key == "Separator").SelectMany(m => m).Distinct().ToList();
+                    listSeparator = list.Where(group => group.Key == "Разделитель").SelectMany(m => m).Distinct().ToList();
                     foreach (var item in listSeparator)
-                        textBox5.Text += listSeparator.IndexOf(item) + " - " + item + Environment.NewLine;
+                    {
+                        int rowIndex = dataGridViewSeparators.Rows.Add();
+
+                        DataGridViewRow row = dataGridViewSeparators.Rows[rowIndex];
+                        row.Cells["IndexSeparator"].Value = listSeparator.IndexOf(item);
+                        row.Cells["ValueSeparator"].Value = item;
+                    }
                 }
         }
     }

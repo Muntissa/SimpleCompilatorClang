@@ -21,12 +21,12 @@ namespace SimpleCompilatorClang
         public static string GetStringType(string t, Variables variables)
         {
             if (Char.IsDigit(t.First()))
-                return "Literal";
+                return "Литерал";
             if (variables.keyWords.Contains(t))
-                return "KeyWord";
-            else if (Char.IsLetter(t.First()))
-                return "ID";
-            return "Separator";
+                return "Ключевое слово";
+            else if (Char.IsLetter(t.First()) || (t.First() == '_'))
+                return "Идентификатор";
+            return "Разделитель";
         }
 
         public static IEnumerable<IGrouping<string, string>> SecondProcess(string inputString, Variables variables)

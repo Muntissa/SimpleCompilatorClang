@@ -1,6 +1,6 @@
 ﻿namespace SimpleCompilatorClang
 {
-    partial class Form1
+    partial class TranslatorForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,108 +28,253 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lexicalAnalysisiTB = new System.Windows.Forms.TextBox();
-            this.buttonLB1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPageLB1 = new System.Windows.Forms.TabPage();
-            this.lexicalAnalysisLabel = new System.Windows.Forms.Label();
-            this.tabPageLB2 = new System.Windows.Forms.TabPage();
+            this.tabPageInput = new System.Windows.Forms.TabPage();
+            this.inputTB = new System.Windows.Forms.TextBox();
+            this.tabPageLexical = new System.Windows.Forms.TabPage();
+            this.startLexicalBTN = new System.Windows.Forms.Button();
+            this.dataGridViewLexical = new System.Windows.Forms.DataGridView();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageLexemClass = new System.Windows.Forms.TabPage();
+            this.dataGridViewGeneral = new System.Windows.Forms.DataGridView();
+            this.List = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewSeparators = new System.Windows.Forms.DataGridView();
+            this.IndexSeparator = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValueSeparator = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewKeyWords = new System.Windows.Forms.DataGridView();
+            this.IndexKeyWord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValueKeyWord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewID = new System.Windows.Forms.DataGridView();
+            this.IndexID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValueID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewLiteral = new System.Windows.Forms.DataGridView();
+            this.IndexLiteral = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValueLiteral = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.classificationLabel = new System.Windows.Forms.Label();
             this.separatorTB = new System.Windows.Forms.Label();
             this.keyWordTB = new System.Windows.Forms.Label();
             this.idTB = new System.Windows.Forms.Label();
             this.leteralTB = new System.Windows.Forms.Label();
             this.buttonGenerealTB = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.buttonFourTB = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBoxKeyWord = new System.Windows.Forms.TextBox();
-            this.textBoxLiteral = new System.Windows.Forms.TextBox();
-            this.inputTB = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
-            this.tabPageLB1.SuspendLayout();
-            this.tabPageLB2.SuspendLayout();
+            this.tabPageInput.SuspendLayout();
+            this.tabPageLexical.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLexical)).BeginInit();
+            this.tabPageLexemClass.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneral)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSeparators)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKeyWords)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLiteral)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lexicalAnalysisiTB
-            // 
-            this.lexicalAnalysisiTB.Location = new System.Drawing.Point(783, 42);
-            this.lexicalAnalysisiTB.Multiline = true;
-            this.lexicalAnalysisiTB.Name = "lexicalAnalysisiTB";
-            this.lexicalAnalysisiTB.Size = new System.Drawing.Size(354, 625);
-            this.lexicalAnalysisiTB.TabIndex = 0;
-            // 
-            // buttonLB1
-            // 
-            this.buttonLB1.Location = new System.Drawing.Point(499, 61);
-            this.buttonLB1.Name = "buttonLB1";
-            this.buttonLB1.Size = new System.Drawing.Size(136, 41);
-            this.buttonLB1.TabIndex = 1;
-            this.buttonLB1.Text = "Start";
-            this.buttonLB1.UseVisualStyleBackColor = true;
-            this.buttonLB1.Click += new System.EventHandler(this.buttonLB1_Click);
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPageLB1);
-            this.tabControl1.Controls.Add(this.tabPageLB2);
+            this.tabControl1.Controls.Add(this.tabPageInput);
+            this.tabControl1.Controls.Add(this.tabPageLexical);
+            this.tabControl1.Controls.Add(this.tabPageLexemClass);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1151, 701);
+            this.tabControl1.Size = new System.Drawing.Size(260, 574);
             this.tabControl1.TabIndex = 2;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
-            // tabPageLB1
+            // tabPageInput
             // 
-            this.tabPageLB1.Controls.Add(this.inputTB);
-            this.tabPageLB1.Controls.Add(this.lexicalAnalysisLabel);
-            this.tabPageLB1.Controls.Add(this.lexicalAnalysisiTB);
-            this.tabPageLB1.Controls.Add(this.buttonLB1);
-            this.tabPageLB1.Location = new System.Drawing.Point(4, 24);
-            this.tabPageLB1.Name = "tabPageLB1";
-            this.tabPageLB1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLB1.Size = new System.Drawing.Size(1143, 673);
-            this.tabPageLB1.TabIndex = 0;
-            this.tabPageLB1.Text = "LB1";
-            this.tabPageLB1.UseVisualStyleBackColor = true;
+            this.tabPageInput.Controls.Add(this.inputTB);
+            this.tabPageInput.Location = new System.Drawing.Point(4, 24);
+            this.tabPageInput.Name = "tabPageInput";
+            this.tabPageInput.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageInput.Size = new System.Drawing.Size(252, 546);
+            this.tabPageInput.TabIndex = 0;
+            this.tabPageInput.Text = "Редактор кода";
+            this.tabPageInput.UseVisualStyleBackColor = true;
             // 
-            // lexicalAnalysisLabel
+            // inputTB
             // 
-            this.lexicalAnalysisLabel.AutoSize = true;
-            this.lexicalAnalysisLabel.Location = new System.Drawing.Point(759, 24);
-            this.lexicalAnalysisLabel.Name = "lexicalAnalysisLabel";
-            this.lexicalAnalysisLabel.Size = new System.Drawing.Size(120, 15);
-            this.lexicalAnalysisLabel.TabIndex = 2;
-            this.lexicalAnalysisLabel.Text = "Лексический анализ";
+            this.inputTB.Location = new System.Drawing.Point(6, 6);
+            this.inputTB.Multiline = true;
+            this.inputTB.Name = "inputTB";
+            this.inputTB.Size = new System.Drawing.Size(241, 534);
+            this.inputTB.TabIndex = 3;
             // 
-            // tabPageLB2
+            // tabPageLexical
             // 
-            this.tabPageLB2.Controls.Add(this.classificationLabel);
-            this.tabPageLB2.Controls.Add(this.separatorTB);
-            this.tabPageLB2.Controls.Add(this.keyWordTB);
-            this.tabPageLB2.Controls.Add(this.idTB);
-            this.tabPageLB2.Controls.Add(this.leteralTB);
-            this.tabPageLB2.Controls.Add(this.buttonGenerealTB);
-            this.tabPageLB2.Controls.Add(this.textBox6);
-            this.tabPageLB2.Controls.Add(this.buttonFourTB);
-            this.tabPageLB2.Controls.Add(this.textBox5);
-            this.tabPageLB2.Controls.Add(this.textBox4);
-            this.tabPageLB2.Controls.Add(this.textBoxKeyWord);
-            this.tabPageLB2.Controls.Add(this.textBoxLiteral);
-            this.tabPageLB2.Location = new System.Drawing.Point(4, 24);
-            this.tabPageLB2.Name = "tabPageLB2";
-            this.tabPageLB2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLB2.Size = new System.Drawing.Size(1143, 673);
-            this.tabPageLB2.TabIndex = 1;
-            this.tabPageLB2.Text = "LB2";
-            this.tabPageLB2.UseVisualStyleBackColor = true;
+            this.tabPageLexical.Controls.Add(this.startLexicalBTN);
+            this.tabPageLexical.Controls.Add(this.dataGridViewLexical);
+            this.tabPageLexical.Location = new System.Drawing.Point(4, 24);
+            this.tabPageLexical.Name = "tabPageLexical";
+            this.tabPageLexical.Size = new System.Drawing.Size(857, 632);
+            this.tabPageLexical.TabIndex = 2;
+            this.tabPageLexical.Text = "Лексический анализ";
+            this.tabPageLexical.UseVisualStyleBackColor = true;
+            // 
+            // startLexicalBTN
+            // 
+            this.startLexicalBTN.Location = new System.Drawing.Point(0, 549);
+            this.startLexicalBTN.Name = "startLexicalBTN";
+            this.startLexicalBTN.Size = new System.Drawing.Size(252, 47);
+            this.startLexicalBTN.TabIndex = 3;
+            this.startLexicalBTN.Text = "Начать лексический анализ";
+            this.startLexicalBTN.UseVisualStyleBackColor = true;
+            this.startLexicalBTN.Click += new System.EventHandler(this.buttonLB1_Click);
+            // 
+            // dataGridViewLexical
+            // 
+            this.dataGridViewLexical.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewLexical.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Type,
+            this.Value});
+            this.dataGridViewLexical.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewLexical.Name = "dataGridViewLexical";
+            this.dataGridViewLexical.RowTemplate.Height = 25;
+            this.dataGridViewLexical.Size = new System.Drawing.Size(250, 540);
+            this.dataGridViewLexical.TabIndex = 0;
+            // 
+            // Type
+            // 
+            this.Type.HeaderText = "Тип";
+            this.Type.Name = "Type";
+            // 
+            // Value
+            // 
+            this.Value.HeaderText = "Значение";
+            this.Value.Name = "Value";
+            // 
+            // tabPageLexemClass
+            // 
+            this.tabPageLexemClass.Controls.Add(this.dataGridViewGeneral);
+            this.tabPageLexemClass.Controls.Add(this.dataGridViewSeparators);
+            this.tabPageLexemClass.Controls.Add(this.dataGridViewKeyWords);
+            this.tabPageLexemClass.Controls.Add(this.dataGridViewID);
+            this.tabPageLexemClass.Controls.Add(this.dataGridViewLiteral);
+            this.tabPageLexemClass.Controls.Add(this.classificationLabel);
+            this.tabPageLexemClass.Controls.Add(this.separatorTB);
+            this.tabPageLexemClass.Controls.Add(this.keyWordTB);
+            this.tabPageLexemClass.Controls.Add(this.idTB);
+            this.tabPageLexemClass.Controls.Add(this.leteralTB);
+            this.tabPageLexemClass.Controls.Add(this.buttonGenerealTB);
+            this.tabPageLexemClass.Controls.Add(this.buttonFourTB);
+            this.tabPageLexemClass.Location = new System.Drawing.Point(4, 24);
+            this.tabPageLexemClass.Name = "tabPageLexemClass";
+            this.tabPageLexemClass.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageLexemClass.Size = new System.Drawing.Size(857, 632);
+            this.tabPageLexemClass.TabIndex = 1;
+            this.tabPageLexemClass.Text = "Классификация лексем";
+            this.tabPageLexemClass.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewGeneral
+            // 
+            this.dataGridViewGeneral.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewGeneral.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.List});
+            this.dataGridViewGeneral.Location = new System.Drawing.Point(356, 169);
+            this.dataGridViewGeneral.Name = "dataGridViewGeneral";
+            this.dataGridViewGeneral.RowTemplate.Height = 25;
+            this.dataGridViewGeneral.Size = new System.Drawing.Size(144, 457);
+            this.dataGridViewGeneral.TabIndex = 16;
+            // 
+            // List
+            // 
+            this.List.HeaderText = "Общий список";
+            this.List.Name = "List";
+            // 
+            // dataGridViewSeparators
+            // 
+            this.dataGridViewSeparators.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSeparators.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IndexSeparator,
+            this.ValueSeparator});
+            this.dataGridViewSeparators.Location = new System.Drawing.Point(610, 337);
+            this.dataGridViewSeparators.Name = "dataGridViewSeparators";
+            this.dataGridViewSeparators.RowTemplate.Height = 25;
+            this.dataGridViewSeparators.Size = new System.Drawing.Size(243, 289);
+            this.dataGridViewSeparators.TabIndex = 15;
+            // 
+            // IndexSeparator
+            // 
+            this.IndexSeparator.HeaderText = "Индекс";
+            this.IndexSeparator.Name = "IndexSeparator";
+            // 
+            // ValueSeparator
+            // 
+            this.ValueSeparator.HeaderText = "Значение";
+            this.ValueSeparator.Name = "ValueSeparator";
+            // 
+            // dataGridViewKeyWords
+            // 
+            this.dataGridViewKeyWords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewKeyWords.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IndexKeyWord,
+            this.ValueKeyWord});
+            this.dataGridViewKeyWords.Location = new System.Drawing.Point(610, 25);
+            this.dataGridViewKeyWords.Name = "dataGridViewKeyWords";
+            this.dataGridViewKeyWords.RowTemplate.Height = 25;
+            this.dataGridViewKeyWords.Size = new System.Drawing.Size(243, 289);
+            this.dataGridViewKeyWords.TabIndex = 14;
+            // 
+            // IndexKeyWord
+            // 
+            this.IndexKeyWord.HeaderText = "Индекс";
+            this.IndexKeyWord.Name = "IndexKeyWord";
+            // 
+            // ValueKeyWord
+            // 
+            this.ValueKeyWord.HeaderText = "Значение";
+            this.ValueKeyWord.Name = "ValueKeyWord";
+            // 
+            // dataGridViewID
+            // 
+            this.dataGridViewID.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewID.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IndexID,
+            this.ValueID});
+            this.dataGridViewID.Location = new System.Drawing.Point(6, 337);
+            this.dataGridViewID.Name = "dataGridViewID";
+            this.dataGridViewID.RowTemplate.Height = 25;
+            this.dataGridViewID.Size = new System.Drawing.Size(243, 289);
+            this.dataGridViewID.TabIndex = 13;
+            // 
+            // IndexID
+            // 
+            this.IndexID.HeaderText = "Индекс";
+            this.IndexID.Name = "IndexID";
+            // 
+            // ValueID
+            // 
+            this.ValueID.HeaderText = "Значение";
+            this.ValueID.Name = "ValueID";
+            // 
+            // dataGridViewLiteral
+            // 
+            this.dataGridViewLiteral.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewLiteral.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IndexLiteral,
+            this.ValueLiteral});
+            this.dataGridViewLiteral.Location = new System.Drawing.Point(6, 25);
+            this.dataGridViewLiteral.Name = "dataGridViewLiteral";
+            this.dataGridViewLiteral.RowTemplate.Height = 25;
+            this.dataGridViewLiteral.Size = new System.Drawing.Size(243, 289);
+            this.dataGridViewLiteral.TabIndex = 12;
+            // 
+            // IndexLiteral
+            // 
+            this.IndexLiteral.HeaderText = "Индекс";
+            this.IndexLiteral.Name = "IndexLiteral";
+            // 
+            // ValueLiteral
+            // 
+            this.ValueLiteral.HeaderText = "Значение";
+            this.ValueLiteral.Name = "ValueLiteral";
             // 
             // classificationLabel
             // 
             this.classificationLabel.AutoSize = true;
             this.classificationLabel.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.classificationLabel.Location = new System.Drawing.Point(426, 10);
+            this.classificationLabel.Location = new System.Drawing.Point(277, 19);
             this.classificationLabel.Name = "classificationLabel";
             this.classificationLabel.Size = new System.Drawing.Size(302, 37);
             this.classificationLabel.TabIndex = 11;
@@ -138,7 +283,7 @@
             // separatorTB
             // 
             this.separatorTB.AutoSize = true;
-            this.separatorTB.Location = new System.Drawing.Point(788, 319);
+            this.separatorTB.Location = new System.Drawing.Point(610, 319);
             this.separatorTB.Name = "separatorTB";
             this.separatorTB.Size = new System.Drawing.Size(76, 15);
             this.separatorTB.TabIndex = 10;
@@ -147,7 +292,7 @@
             // keyWordTB
             // 
             this.keyWordTB.AutoSize = true;
-            this.keyWordTB.Location = new System.Drawing.Point(788, 7);
+            this.keyWordTB.Location = new System.Drawing.Point(610, 7);
             this.keyWordTB.Name = "keyWordTB";
             this.keyWordTB.Size = new System.Drawing.Size(100, 15);
             this.keyWordTB.TabIndex = 9;
@@ -173,109 +318,86 @@
             // 
             // buttonGenerealTB
             // 
-            this.buttonGenerealTB.Location = new System.Drawing.Point(365, 113);
+            this.buttonGenerealTB.Location = new System.Drawing.Point(255, 113);
             this.buttonGenerealTB.Name = "buttonGenerealTB";
-            this.buttonGenerealTB.Size = new System.Drawing.Size(417, 50);
+            this.buttonGenerealTB.Size = new System.Drawing.Size(349, 50);
             this.buttonGenerealTB.TabIndex = 6;
             this.buttonGenerealTB.Text = "Общий список";
             this.buttonGenerealTB.UseVisualStyleBackColor = true;
-            this.buttonGenerealTB.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(540, 169);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(76, 474);
-            this.textBox6.TabIndex = 5;
+            this.buttonGenerealTB.Click += new System.EventHandler(this.generalListButton_Click);
             // 
             // buttonFourTB
             // 
-            this.buttonFourTB.Location = new System.Drawing.Point(365, 59);
+            this.buttonFourTB.Location = new System.Drawing.Point(255, 59);
             this.buttonFourTB.Name = "buttonFourTB";
-            this.buttonFourTB.Size = new System.Drawing.Size(417, 48);
+            this.buttonFourTB.Size = new System.Drawing.Size(349, 48);
             this.buttonFourTB.TabIndex = 4;
             this.buttonFourTB.Text = "Распределить по спискам";
             this.buttonFourTB.UseVisualStyleBackColor = true;
             this.buttonFourTB.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(788, 337);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(339, 306);
-            this.textBox5.TabIndex = 3;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(6, 337);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(344, 306);
-            this.textBox4.TabIndex = 2;
-            // 
-            // textBoxKeyWord
-            // 
-            this.textBoxKeyWord.Location = new System.Drawing.Point(788, 25);
-            this.textBoxKeyWord.Multiline = true;
-            this.textBoxKeyWord.Name = "textBoxKeyWord";
-            this.textBoxKeyWord.Size = new System.Drawing.Size(339, 289);
-            this.textBoxKeyWord.TabIndex = 1;
-            // 
-            // textBoxLiteral
-            // 
-            this.textBoxLiteral.Location = new System.Drawing.Point(6, 25);
-            this.textBoxLiteral.Multiline = true;
-            this.textBoxLiteral.Name = "textBoxLiteral";
-            this.textBoxLiteral.Size = new System.Drawing.Size(344, 289);
-            this.textBoxLiteral.TabIndex = 0;
-            // 
-            // inputTB
-            // 
-            this.inputTB.Location = new System.Drawing.Point(6, 42);
-            this.inputTB.Multiline = true;
-            this.inputTB.Name = "inputTB";
-            this.inputTB.Size = new System.Drawing.Size(354, 625);
-            this.inputTB.TabIndex = 3;
-            // 
-            // Form1
+            // TranslatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1175, 725);
+            this.ClientSize = new System.Drawing.Size(284, 596);
             this.Controls.Add(this.tabControl1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "TranslatorForm";
+            this.Text = "Транслятор C";
             this.tabControl1.ResumeLayout(false);
-            this.tabPageLB1.ResumeLayout(false);
-            this.tabPageLB1.PerformLayout();
-            this.tabPageLB2.ResumeLayout(false);
-            this.tabPageLB2.PerformLayout();
+            this.tabPageInput.ResumeLayout(false);
+            this.tabPageInput.PerformLayout();
+            this.tabPageLexical.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLexical)).EndInit();
+            this.tabPageLexemClass.ResumeLayout(false);
+            this.tabPageLexemClass.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneral)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSeparators)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKeyWords)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLiteral)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private TextBox lexicalAnalysisiTB;
-        private Button buttonLB1;
         private TabControl tabControl1;
-        private TabPage tabPageLB1;
-        private TabPage tabPageLB2;
+        private TabPage tabPageInput;
+        private TabPage tabPageLexemClass;
         private Button buttonFourTB;
-        private TextBox textBox5;
-        private TextBox textBox4;
-        private TextBox textBoxKeyWord;
-        private TextBox textBoxLiteral;
-        private TextBox textBox6;
         private Button buttonGenerealTB;
-        private Label lexicalAnalysisLabel;
         private Label leteralTB;
         private Label classificationLabel;
         private Label separatorTB;
         private Label keyWordTB;
         private Label idTB;
+        private TabPage tabPageLexical;
         private TextBox inputTB;
+        private DataGridView dataGridViewLexical;
+        private DataGridViewTextBoxColumn Type;
+        private DataGridViewTextBoxColumn Value;
+        private Button startLexicalBTN;
+        private DataGridView dataGridViewID;
+        private DataGridView dataGridViewLiteral;
+        private DataGridView dataGridViewGeneral;
+        private DataGridView dataGridViewSeparators;
+        private DataGridView dataGridViewKeyWords;
+        private DataGridViewTextBoxColumn List;
+        private DataGridViewTextBoxColumn Index;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn IndexSeparator;
+        private DataGridViewTextBoxColumn ValueSeparator;
+        private DataGridViewTextBoxColumn IndexKeyWord;
+        private DataGridViewTextBoxColumn ValueKeyWord;
+        private DataGridViewTextBoxColumn IndexID;
+        private DataGridViewTextBoxColumn ValueID;
+        private DataGridViewTextBoxColumn IndexLiteral;
+        private DataGridViewTextBoxColumn ValueLiteral;
     }
 }
