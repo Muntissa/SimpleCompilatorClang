@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageInput = new System.Windows.Forms.TabPage();
+            this.OpenBTN = new System.Windows.Forms.Button();
             this.inputTB = new System.Windows.Forms.TextBox();
             this.tabPageLexical = new System.Windows.Forms.TabPage();
             this.startLexicalBTN = new System.Windows.Forms.Button();
@@ -78,28 +79,39 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(260, 574);
+            this.tabControl1.Size = new System.Drawing.Size(260, 572);
             this.tabControl1.TabIndex = 2;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.TabControl_SelectedIndexChanged);
             // 
             // tabPageInput
             // 
+            this.tabPageInput.Controls.Add(this.OpenBTN);
             this.tabPageInput.Controls.Add(this.inputTB);
             this.tabPageInput.Location = new System.Drawing.Point(4, 24);
             this.tabPageInput.Name = "tabPageInput";
             this.tabPageInput.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageInput.Size = new System.Drawing.Size(252, 546);
+            this.tabPageInput.Size = new System.Drawing.Size(252, 544);
             this.tabPageInput.TabIndex = 0;
             this.tabPageInput.Text = "Редактор кода";
             this.tabPageInput.UseVisualStyleBackColor = true;
+            // 
+            // OpenBTN
+            // 
+            this.OpenBTN.Location = new System.Drawing.Point(6, 498);
+            this.OpenBTN.Name = "OpenBTN";
+            this.OpenBTN.Size = new System.Drawing.Size(240, 40);
+            this.OpenBTN.TabIndex = 1;
+            this.OpenBTN.Text = "Открыть код из файла";
+            this.OpenBTN.UseVisualStyleBackColor = true;
+            this.OpenBTN.Click += new System.EventHandler(this.OpenBTN_Click);
             // 
             // inputTB
             // 
             this.inputTB.Location = new System.Drawing.Point(6, 6);
             this.inputTB.Multiline = true;
             this.inputTB.Name = "inputTB";
-            this.inputTB.Size = new System.Drawing.Size(241, 534);
-            this.inputTB.TabIndex = 3;
+            this.inputTB.Size = new System.Drawing.Size(240, 486);
+            this.inputTB.TabIndex = 0;
             // 
             // tabPageLexical
             // 
@@ -107,7 +119,7 @@
             this.tabPageLexical.Controls.Add(this.dataGridViewLexical);
             this.tabPageLexical.Location = new System.Drawing.Point(4, 24);
             this.tabPageLexical.Name = "tabPageLexical";
-            this.tabPageLexical.Size = new System.Drawing.Size(857, 632);
+            this.tabPageLexical.Size = new System.Drawing.Size(1006, 544);
             this.tabPageLexical.TabIndex = 2;
             this.tabPageLexical.Text = "Лексический анализ";
             this.tabPageLexical.UseVisualStyleBackColor = true;
@@ -120,7 +132,7 @@
             this.startLexicalBTN.TabIndex = 3;
             this.startLexicalBTN.Text = "Начать лексический анализ";
             this.startLexicalBTN.UseVisualStyleBackColor = true;
-            this.startLexicalBTN.Click += new System.EventHandler(this.buttonLB1_Click);
+            this.startLexicalBTN.Click += new System.EventHandler(this.LexicalBTN_Click);
             // 
             // dataGridViewLexical
             // 
@@ -161,7 +173,7 @@
             this.tabPageLexemClass.Location = new System.Drawing.Point(4, 24);
             this.tabPageLexemClass.Name = "tabPageLexemClass";
             this.tabPageLexemClass.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLexemClass.Size = new System.Drawing.Size(857, 632);
+            this.tabPageLexemClass.Size = new System.Drawing.Size(1006, 544);
             this.tabPageLexemClass.TabIndex = 1;
             this.tabPageLexemClass.Text = "Классификация лексем";
             this.tabPageLexemClass.UseVisualStyleBackColor = true;
@@ -322,9 +334,9 @@
             this.buttonGenerealTB.Name = "buttonGenerealTB";
             this.buttonGenerealTB.Size = new System.Drawing.Size(349, 50);
             this.buttonGenerealTB.TabIndex = 6;
-            this.buttonGenerealTB.Text = "Общий список";
+            this.buttonGenerealTB.Text = "Формирование общей таблицы";
             this.buttonGenerealTB.UseVisualStyleBackColor = true;
-            this.buttonGenerealTB.Click += new System.EventHandler(this.generalListButton_Click);
+            this.buttonGenerealTB.Click += new System.EventHandler(this.GeneralListButton_Click);
             // 
             // buttonFourTB
             // 
@@ -332,9 +344,9 @@
             this.buttonFourTB.Name = "buttonFourTB";
             this.buttonFourTB.Size = new System.Drawing.Size(349, 48);
             this.buttonFourTB.TabIndex = 4;
-            this.buttonFourTB.Text = "Распределить по спискам";
+            this.buttonFourTB.Text = "Распределение по таблицам";
             this.buttonFourTB.UseVisualStyleBackColor = true;
-            this.buttonFourTB.Click += new System.EventHandler(this.button2_Click);
+            this.buttonFourTB.Click += new System.EventHandler(this.FourTableBTN_Click);
             // 
             // TranslatorForm
             // 
@@ -372,7 +384,6 @@
         private Label keyWordTB;
         private Label idTB;
         private TabPage tabPageLexical;
-        private TextBox inputTB;
         private DataGridView dataGridViewLexical;
         private DataGridViewTextBoxColumn Type;
         private DataGridViewTextBoxColumn Value;
@@ -383,14 +394,6 @@
         private DataGridView dataGridViewSeparators;
         private DataGridView dataGridViewKeyWords;
         private DataGridViewTextBoxColumn List;
-        private DataGridViewTextBoxColumn Index;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn IndexSeparator;
         private DataGridViewTextBoxColumn ValueSeparator;
         private DataGridViewTextBoxColumn IndexKeyWord;
@@ -399,5 +402,7 @@
         private DataGridViewTextBoxColumn ValueID;
         private DataGridViewTextBoxColumn IndexLiteral;
         private DataGridViewTextBoxColumn ValueLiteral;
+        private TextBox inputTB;
+        private Button OpenBTN;
     }
 }

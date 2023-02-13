@@ -8,59 +8,55 @@ namespace SimpleCompilatorClang
         public TranslatorForm()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
+            buttonFourTB.Enabled = false;
+            buttonGenerealTB.Enabled = false;
         }
 
-        /*main()
-        {
-            int a, b;
-            c = 0;
-            for (b = 1; b < 5; b++)
-            {
-                b = 5;
-                c = c + b * 3;
-            }
-        }*/
-
-/*        int main() 
-        { 
-            int k; 
-            int sum = 0; 
-            for (int i = 1; i <= k; i++) 
-            {
-                sum = sum + i; 
-            } 
-        }*/
-        Variables Variables = new Variables(
-            new List<string> { "/", "(", ")", "{", "}", "*", "=", ";", "+", "-", ",", ">", "<"},
-            new List<string> { "==", "++", "--", "<=", ">=", "!=" }, 
-            new List<string> { "for", "int", "main", "double, float", "if"}
+        readonly Variables Variables = new(
+            new List<string> { "/", "(", ")", "{", "}", "*", "=", ";", "+", "-", ",", ">", "<" },
+            new List<string> { "==", "++", "--", "<=", ">=", "!=" },
+            new List<string> { "for", "int", "main", "double, float", "if" }
             );
-        
-        List<string> listLeteral, listKeyWord, listID, listSeparator;
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        List<string>? listLeteral, listKeyWord, listID, listSeparator;
+
+        private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl1.SelectedTab == tabPageInput)
             {
-                tabControl1.Size = new Size(260, 574);
-                this.Size = new Size(300, 635);
+                tabControl1.Size = new (260, 572);
+                this.Size = new (300, 635);
             }
-            else if(tabControl1.SelectedTab == tabPageLexical)
+            else if (tabControl1.SelectedTab == tabPageLexical)
             {
-                tabControl1.Size = new Size(260, 630);
-                this.Size = new Size(294, 685);
+                tabControl1.Size = new (260, 630);
+                this.Size = new (294, 685);
             }
-            else if(tabControl1.SelectedTab == tabPageLexemClass)
+            else if (tabControl1.SelectedTab == tabPageLexemClass)
             {
-                tabControl1.Size = new Size(865, 660);
-                this.Size = new Size(900, 715);
-            } 
+                tabControl1.Size = new (865, 660);
+                this.Size = new (900, 715);
+            }
         }
 
-        private void generalListButton_Click(object sender, EventArgs e)
+        private void OpenBTN_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new();
+
+            openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+                inputTB.Text = File.ReadAllText(openFileDialog.FileName);
+        }
+
+        private void GeneralListButton_Click(object sender, EventArgs e)
         {
             var firstList = Helper.FirstProcess(inputTB.Text, Variables);
-            
+
             dataGridViewGeneral.Rows.Clear();
 
 
@@ -73,7 +69,7 @@ namespace SimpleCompilatorClang
                 if (listLeteral.Contains(word))
                 {
                     row.Cells["List"].Value = "1" + " : " + listLeteral.IndexOf(word);
-                }    
+                }
                 else if (listKeyWord.Contains(word))
                 {
                     row.Cells["List"].Value = "2" + " : " + listKeyWord.IndexOf(word);
@@ -85,28 +81,33 @@ namespace SimpleCompilatorClang
                 else if (listSeparator.Contains(word))
                 {
                     row.Cells["List"].Value = "4" + " : " + listSeparator.IndexOf(word);
-                } 
+                }
             }
         }
 
-        private void buttonLB1_Click(object sender, EventArgs e)
+        private void LexicalBTN_Click(object sender, EventArgs e)
         {
+            if (inputTB.Text == "")
+                MessageBox.Show("Редактор кода пуст! Введите фрагмент кода", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             var groupList = Helper.FirstProcess(inputTB.Text, Variables);
-            
+
             dataGridViewLexical.Rows.Clear();
-            
+
             foreach (var item in groupList)
             {
                 int rowIndex = dataGridViewLexical.Rows.Add();
-                
+
                 DataGridViewRow row = dataGridViewLexical.Rows[rowIndex];
-                
+
                 row.Cells["Value"].Value = item;
                 row.Cells["Type"].Value = Helper.GetStringType(item, Variables);
             }
+
+            buttonFourTB.Enabled = true;
         }
-        
-        private void button2_Click(object sender, EventArgs e)
+
+        private void FourTableBTN_Click(object sender, EventArgs e)
         {
             var list = Helper.SecondProcess(inputTB.Text, Variables);
 
@@ -125,7 +126,7 @@ namespace SimpleCompilatorClang
                         int rowIndex = dataGridViewLiteral.Rows.Add();
 
                         DataGridViewRow row = dataGridViewLiteral.Rows[rowIndex];
-                        
+
                         row.Cells["IndexLiteral"].Value = listLeteral.IndexOf(item);
                         row.Cells["ValueLiteral"].Value = item;
                     }
@@ -133,12 +134,13 @@ namespace SimpleCompilatorClang
                 else if (group.Key == "Ключевое слово")
                 {
                     listKeyWord = list.Where(group => group.Key == "Ключевое слово").SelectMany(m => m).Distinct().ToList();
+
                     foreach (var item in listKeyWord)
                     {
                         int rowIndex = dataGridViewKeyWords.Rows.Add();
 
                         DataGridViewRow row = dataGridViewKeyWords.Rows[rowIndex];
-                        
+
                         row.Cells["IndexKeyWord"].Value = listKeyWord.IndexOf(item);
                         row.Cells["ValueKeyWord"].Value = item;
                     }
@@ -146,12 +148,13 @@ namespace SimpleCompilatorClang
                 else if (group.Key == "Идентификатор")
                 {
                     listID = list.Where(group => group.Key == "Идентификатор").SelectMany(m => m).Distinct().ToList();
+
                     foreach (var item in listID)
                     {
                         int rowIndex = dataGridViewID.Rows.Add();
 
                         DataGridViewRow row = dataGridViewID.Rows[rowIndex];
-                        
+
                         row.Cells["IndexID"].Value = listID.IndexOf(item);
                         row.Cells["ValueID"].Value = item;
                     }
@@ -159,15 +162,31 @@ namespace SimpleCompilatorClang
                 else if (group.Key == "Разделитель")
                 {
                     listSeparator = list.Where(group => group.Key == "Разделитель").SelectMany(m => m).Distinct().ToList();
+
                     foreach (var item in listSeparator)
                     {
                         int rowIndex = dataGridViewSeparators.Rows.Add();
 
                         DataGridViewRow row = dataGridViewSeparators.Rows[rowIndex];
+
                         row.Cells["IndexSeparator"].Value = listSeparator.IndexOf(item);
                         row.Cells["ValueSeparator"].Value = item;
                     }
                 }
+
+            if (listLeteral is null)
+                listLeteral = new() { "Пусто" };
+
+            if (listID is null)
+                listID = new() { "Пусто" };
+
+            if (listKeyWord is null)
+                listKeyWord = new() { "Пусто" };
+
+            if (listSeparator is null)
+                listSeparator = new() { "Пусто" };
+
+            buttonGenerealTB.Enabled = true;
         }
     }
 }
