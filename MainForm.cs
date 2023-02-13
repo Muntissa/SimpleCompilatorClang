@@ -33,7 +33,7 @@ namespace SimpleCompilatorClang
         Variables Variables = new Variables(
             new List<string> { "/", "(", ")", "{", "}", "*", "=", ";", "+", "-", ",", ">", "<"},
             new List<string> { "==", "++", "--", "<=", ">=", "!=" }, 
-            new List<string> { "for", "int", "main", "double, float" }
+            new List<string> { "for", "int", "main", "double, float", "if"}
             );
         
         List<string> listLeteral, listKeyWord, listID, listSeparator;

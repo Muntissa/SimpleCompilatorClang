@@ -8,15 +8,15 @@ namespace SimpleCompilatorClang
 {
     public class Variables
     {
-        public List<string> singleSeparators;
-        public List<string> doubleSeparators;
-        public List<string> keyWords;
+        public List<string> SingleSeparators;
+        public List<string> DoubleSeparators;
+        public List<string> KeyWords;
         
         public Variables(List<string> inSingleSeparators, List<string> inDoubleSeparators, List<string> inKeyWords)
         {
-            singleSeparators = inSingleSeparators;
-            doubleSeparators = inDoubleSeparators;
-            keyWords = inKeyWords;
+            SingleSeparators = inSingleSeparators;
+            DoubleSeparators = inDoubleSeparators;
+            KeyWords = inKeyWords;
         }
     }
 }
